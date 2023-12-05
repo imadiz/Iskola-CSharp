@@ -1,0 +1,23 @@
+1. FELADAT
+Készítsünk egy személyeket reprezentáló osztályt. A személyekről tároljuk nevüket és lakcímüket (a név csak olvasható, a lakcím írható-olvasható)!
+Tároljuk a személy születési dátumát is egy három egész számot tartalmazó tömbben.
+Készítsünk konstruktorokat az osztályhoz!
+- Csak nevet adunk meg.
+- Nevet és címet adunk meg.
+- Nevet és a születési dátumot tartalmazó tömböt adjuk meg.
+Készítsünk egy string paraméterű indexelőt az osztályhoz, ami a születési dátum egyes elemeit (év/hónap/nap) adja vissza a paraméter értékétől függően!
+Készítsünk egy Kor() metódust.
+Örököltessünk egy alkalmazott nevű osztályt a Személy-ből! Kiegészítés: beosztás, fizetés.
+Készítsünk konstruktorokat az Alkalmazott osztályhoz!
+- Csak nevet adunk meg.
+- Nevet, beosztást és fizetését adunk meg.
+Készítsünk egy fizetésemelés metódust az Alkalmazott osztályhoz!
+
+
+2.	FELADAT
+Készítsünk egy „Kör” nevű osztályt, amely körök kezelését valósítja meg. Az osztály a következő jellemzőkkel rendelkezzen:
+- Legyen képes tárolni a kör sugarát és középpontját
+- Legyen képes a kört nagyítani és kicsinyíteni
+- Legyen képes kiszámítani a saját kerületét és területét
+Származtassunk a fenti Kör osztályból egy „SzínesKör” nevű osztályt, amely a továbbiakkal egészíti ki a Kör osztályt:
+- Legyen képes tárolni, visszaadni és módosítani a kör színét

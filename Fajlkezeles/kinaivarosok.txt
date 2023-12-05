@@ -1,0 +1,17 @@
+Helyezés;Város;Ország;Népesség
+2;Sanghaj;Kína;34000000
+5;Kanton;Kína;25000000
+6;Peking;Kína;24900000
+9;Sencsen;Kína;23300000
+16;Vuhan;Kína;19000000
+18;Csengtu;Kína;18100000
+21;Csungking;Kína;17000000
+26;Tiencsin;Kína;15400000
+31;Hangcsou;Kína;13400000
+34;Hszian;Kína;12900000
+36;Csangcsou;Kína;11400000
+39;Santou;Kína;12000000
+40;Nanking;Kína;11700000
+43;Csinan;Kína;11000000
+45;Harbin;Kína;10500000
+49;Csengcsou;Kína;9700000
