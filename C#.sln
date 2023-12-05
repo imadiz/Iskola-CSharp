@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fajlkezeles", "Fajlkezeles\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqualsTesting", "EqualsTesting\EqualsTesting.csproj", "{FE5EBACC-F153-4283-8E7F-A6016688D33A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Körös-kivételkezelés", "Körös-kivételkezelés\Körös-kivételkezelés.csproj", "{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{FE5EBACC-F153-4283-8E7F-A6016688D33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5EBACC-F153-4283-8E7F-A6016688D33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE5EBACC-F153-4283-8E7F-A6016688D33A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
