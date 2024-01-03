@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqualsTesting", "EqualsTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Körös-kivételkezelés", "Körös-kivételkezelés\Körös-kivételkezelés.csproj", "{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homerseklet", "Homerseklet\Homerseklet.csproj", "{81A594B9-08BF-4026-9471-4F0C198EE102}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
