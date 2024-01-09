@@ -33,10 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqualsTesting", "EqualsTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Körös-kivételkezelés", "Körös-kivételkezelés\Körös-kivételkezelés.csproj", "{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI projektek", "GUI projektek\GUI projektek.csproj", "{B795E252-8D98-4C62-8B88-1BBACA2E1248}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Berek2020", "Berek2020\Berek2020.csproj", "{ABB2937E-0C7A-49CF-9C38-EFAE5CB504F3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,14 +99,6 @@ Global
 		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B795E252-8D98-4C62-8B88-1BBACA2E1248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B795E252-8D98-4C62-8B88-1BBACA2E1248}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B795E252-8D98-4C62-8B88-1BBACA2E1248}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B795E252-8D98-4C62-8B88-1BBACA2E1248}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABB2937E-0C7A-49CF-9C38-EFAE5CB504F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABB2937E-0C7A-49CF-9C38-EFAE5CB504F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABB2937E-0C7A-49CF-9C38-EFAE5CB504F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABB2937E-0C7A-49CF-9C38-EFAE5CB504F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
