@@ -35,6 +35,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Körös-kivételkezelés", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Berek2020", "Berek2020\Berek2020.csproj", "{215B8594-F82F-456A-AB57-7625BEA33FEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homerseklet", "Homerseklet\Homerseklet.csproj", "{81A594B9-08BF-4026-9471-4F0C198EE102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iskolaGUI", "iskolaGUI\iskolaGUI.csproj", "{7A8A1B04-266D-4E45-8780-9934FBBD0366}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cukraszda", "Cukraszda\Cukraszda.csproj", "{82673A6A-3EAD-4F9A-8DA2-40099473F588}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cukraszda.Desktop", "Cukraszda.Desktop\Cukraszda.Desktop.csproj", "{C8F5DDD9-7DC8-4A85-8137-58101B553D22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cukraszda.Browser", "Cukraszda.Browser\Cukraszda.Browser.csproj", "{493AD76D-0FBB-492E-B6AF-1860CED41262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +115,26 @@ Global
 		{215B8594-F82F-456A-AB57-7625BEA33FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{215B8594-F82F-456A-AB57-7625BEA33FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{215B8594-F82F-456A-AB57-7625BEA33FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A594B9-08BF-4026-9471-4F0C198EE102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8A1B04-266D-4E45-8780-9934FBBD0366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8A1B04-266D-4E45-8780-9934FBBD0366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8A1B04-266D-4E45-8780-9934FBBD0366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8A1B04-266D-4E45-8780-9934FBBD0366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82673A6A-3EAD-4F9A-8DA2-40099473F588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82673A6A-3EAD-4F9A-8DA2-40099473F588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82673A6A-3EAD-4F9A-8DA2-40099473F588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82673A6A-3EAD-4F9A-8DA2-40099473F588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F5DDD9-7DC8-4A85-8137-58101B553D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F5DDD9-7DC8-4A85-8137-58101B553D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F5DDD9-7DC8-4A85-8137-58101B553D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F5DDD9-7DC8-4A85-8137-58101B553D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

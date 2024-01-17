@@ -35,6 +35,7 @@
             lbl_numberofworkers = new Label();
             btn_Avg = new Button();
             lbl_Avg = new Label();
+            lbx_nevek = new ListBox();
             ms_mainstrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -99,12 +100,23 @@
             lbl_Avg.TabIndex = 4;
             lbl_Avg.Text = "0 Ft";
             // 
+            // lbx_nevek
+            // 
+            lbx_nevek.Dock = DockStyle.Right;
+            lbx_nevek.FormattingEnabled = true;
+            lbx_nevek.ItemHeight = 25;
+            lbx_nevek.Location = new Point(479, 33);
+            lbx_nevek.Name = "lbx_nevek";
+            lbx_nevek.Size = new Size(321, 417);
+            lbx_nevek.TabIndex = 5;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
+            Controls.Add(lbx_nevek);
             Controls.Add(lbl_Avg);
             Controls.Add(btn_Avg);
             Controls.Add(lbl_numberofworkers);
@@ -128,5 +140,6 @@
         private Label lbl_numberofworkers;
         private Button btn_Avg;
         private Label lbl_Avg;
+        private ListBox lbx_nevek;
     }
 }
