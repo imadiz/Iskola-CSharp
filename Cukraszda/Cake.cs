@@ -17,5 +17,8 @@ namespace Cukraszda
 
         [ObservableProperty]
         private string _displayname = $"{name} | {price} Ft";
+
+        [ObservableProperty]
+        private int _quantity = 0;
     }
 }

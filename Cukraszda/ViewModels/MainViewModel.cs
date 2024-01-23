@@ -1,18 +1,18 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
+using ReactiveUI;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Reactive;
 
 namespace Cukraszda.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _greeting = "Welcome to Avalonia!";
-
-    [ObservableProperty]
     private ObservableCollection<Cake> _allcakes = new();
-
     public void ReadFile()
     {
         if (OperatingSystem.IsBrowser())

@@ -17,26 +17,31 @@
              Source="avares://Cukraszda/Assets/fucked_up_hedgehog.jpg"/>
     </TabItem>
     <TabItem Header="Árlista">
-      <ListBox ItemsSource="{Binding Allcakes}">
-        <ListBox.ItemTemplate>
-          <DataTemplate>
-            <Grid>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-              </Grid.ColumnDefinitions>
-              <Label Content="{Binding Displayname}"
-                     Grid.Column="0"/>
-              <NumericUpDown Minimum="0"
-                             Maximum="10"
-                             HorizontalAlignment="Right"
-                             Grid.Column="1"
-                             FormatString="0"
-                             Value="0"/>
-            </Grid>
-          </DataTemplate>
-        </ListBox.ItemTemplate>
-      </ListBox>
+      <StackPanel Orientation="Vertical">
+        <ListBox ItemsSource="{Binding Allcakes}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition/>
+                  <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="0">
+                  <Label Content="{Binding Displayname}"/>
+                </StackPanel>
+                <NumericUpDown Minimum="0"
+                               Maximum="10"
+                               HorizontalAlignment="Right"
+                               Grid.Column="1"
+                               FormatString="0"
+                               Value="{Binding Quantity}"
+                               ValueChanged="Numupdown_ValueChanged"/>
+              </Grid>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </StackPanel>
     </TabItem>
     <TabItem Header="Névjegy">
       

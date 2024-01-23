@@ -48,6 +48,9 @@ namespace Berek2020
         private void Btn_exit_Click(object? sender, EventArgs e)
         {
             Application.Exit();
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.InitialDirectory = Environment.CurrentDirectory;
+            //ofd.ShowDialog();
         }
     }
 }
