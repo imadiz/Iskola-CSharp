@@ -1,0 +1,44 @@
+﻿<Window x:Class="Orszagok.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Orszagok"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Országok" Height="600" Width="450">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Grid x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu IsMainMenu="True"
+              VerticalAlignment="Top"
+              Grid.Row="0">
+            <MenuItem Header="Fájl"/>
+            <MenuItem Header="Európaiak"/>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Országok népessége"
+                   HorizontalAlignment="Center"
+                   Grid.ColumnSpan="2"
+                   FontWeight="Bold"
+                   FontSize="20"/>
+            <ListBox Grid.Row="1"
+                     ItemsSource="{Binding AllCountries}"
+                     DisplayMemberPath="Name"
+                     HorizontalContentAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

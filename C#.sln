@@ -1,11 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orai munka", "Orai munka\Orai munka.csproj", "{E3652548-2E8F-4057-8C38-51B19549CE7D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP Példák", "OOP Példák\OOP Példák.csproj", "{C20A3819-7788-47EA-AD48-EDCD35389709}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allatok", "Allatok\Allatok.csproj", "{33EB0D37-A792-4F42-8251-BF1BE516617F}"
 EndProject
@@ -25,13 +22,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dolgozat", "Dolgozat\Dolgoz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-21", "09-21\09-21.csproj", "{EAAA09C7-1F32-465A-A481-CF02EF87863C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hibakezelés", "Hibakezelés\Hibakezelés.csproj", "{49193E51-E78D-4AB1-B271-87BF41E847DD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fajlkezeles", "Fajlkezeles\Fajlkezeles.csproj", "{A35E1D1F-26C7-40BE-8018-D97A9C1D8F33}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqualsTesting", "EqualsTesting\EqualsTesting.csproj", "{FE5EBACC-F153-4283-8E7F-A6016688D33A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Körös-kivételkezelés", "Körös-kivételkezelés\Körös-kivételkezelés.csproj", "{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Berek2020", "Berek2020\Berek2020.csproj", "{215B8594-F82F-456A-AB57-7625BEA33FEE}"
 EndProject
@@ -45,6 +38,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cukraszda.Desktop", "Cukras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cukraszda.Browser", "Cukraszda.Browser\Cukraszda.Browser.csproj", "{493AD76D-0FBB-492E-B6AF-1860CED41262}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maraton_FutoVerseny", "Maraton_FutoVerseny\Maraton_FutoVerseny.csproj", "{156AB2E5-15AD-4651-BA95-7C2370A1DC9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orszagok", "Orszagok\Orszagok.csproj", "{23C8D071-0C37-4706-86BE-0D76E4481FB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,10 +52,6 @@ Global
 		{E3652548-2E8F-4057-8C38-51B19549CE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3652548-2E8F-4057-8C38-51B19549CE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3652548-2E8F-4057-8C38-51B19549CE7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C20A3819-7788-47EA-AD48-EDCD35389709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C20A3819-7788-47EA-AD48-EDCD35389709}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C20A3819-7788-47EA-AD48-EDCD35389709}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C20A3819-7788-47EA-AD48-EDCD35389709}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33EB0D37-A792-4F42-8251-BF1BE516617F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33EB0D37-A792-4F42-8251-BF1BE516617F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33EB0D37-A792-4F42-8251-BF1BE516617F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -95,10 +88,6 @@ Global
 		{EAAA09C7-1F32-465A-A481-CF02EF87863C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAAA09C7-1F32-465A-A481-CF02EF87863C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAAA09C7-1F32-465A-A481-CF02EF87863C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49193E51-E78D-4AB1-B271-87BF41E847DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49193E51-E78D-4AB1-B271-87BF41E847DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49193E51-E78D-4AB1-B271-87BF41E847DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49193E51-E78D-4AB1-B271-87BF41E847DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A35E1D1F-26C7-40BE-8018-D97A9C1D8F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A35E1D1F-26C7-40BE-8018-D97A9C1D8F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A35E1D1F-26C7-40BE-8018-D97A9C1D8F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -107,10 +96,6 @@ Global
 		{FE5EBACC-F153-4283-8E7F-A6016688D33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5EBACC-F153-4283-8E7F-A6016688D33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE5EBACC-F153-4283-8E7F-A6016688D33A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A8E63B2-F420-4B74-AC95-EA7C484F5EFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{215B8594-F82F-456A-AB57-7625BEA33FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{215B8594-F82F-456A-AB57-7625BEA33FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{215B8594-F82F-456A-AB57-7625BEA33FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -135,6 +120,14 @@ Global
 		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{493AD76D-0FBB-492E-B6AF-1860CED41262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156AB2E5-15AD-4651-BA95-7C2370A1DC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156AB2E5-15AD-4651-BA95-7C2370A1DC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156AB2E5-15AD-4651-BA95-7C2370A1DC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156AB2E5-15AD-4651-BA95-7C2370A1DC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C8D071-0C37-4706-86BE-0D76E4481FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C8D071-0C37-4706-86BE-0D76E4481FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C8D071-0C37-4706-86BE-0D76E4481FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C8D071-0C37-4706-86BE-0D76E4481FB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

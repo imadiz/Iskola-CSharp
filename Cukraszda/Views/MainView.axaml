@@ -29,14 +29,13 @@
                 <StackPanel Orientation="Horizontal"
                             Grid.Column="0">
                   <Label Content="{Binding Displayname}"/>
+                  <NumericUpDown Minimum="0"
+                                 Maximum="10"
+                                 HorizontalAlignment="Right"
+                                 Grid.Column="1"
+                                 FormatString="0"
+                                 Value="{Binding Quantity}"/>
                 </StackPanel>
-                <NumericUpDown Minimum="0"
-                               Maximum="10"
-                               HorizontalAlignment="Right"
-                               Grid.Column="1"
-                               FormatString="0"
-                               Value="{Binding Quantity}"
-                               ValueChanged="Numupdown_ValueChanged"/>
               </Grid>
             </DataTemplate>
           </ListBox.ItemTemplate>
