@@ -39,6 +39,34 @@
                      ItemsSource="{Binding AllCountries}"
                      DisplayMemberPath="Name"
                      HorizontalContentAlignment="Center"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Grid.Column="1">
+                <GroupBox Header="Mit számoljak?"
+                          VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical">
+                        <RadioButton x:Name="MoreThan10Mil" Content="10 milliónál több"
+                                     IsChecked="True"
+                                     Margin="0 0 0 5"/>
+                        <RadioButton Content="10 milliónál kevesebb"/>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Kiszámol"
+                            Margin="0 0 10 0"
+                            Command="{Binding CalculateMoreOrLess}"
+                            CommandParameter="{Binding ElementName=MoreThan10Mil,
+                                                       Path=IsChecked}"/>
+                    <Label Content="{Binding MoreOrLessDisplay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox SelectedIndex="0">
+                        <ComboBoxItem Content="Legnagyobb"/>
+                        <ComboBoxItem Content="Legkisebb"/>
+                    </ComboBox>
+                    <Label Content=""/>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
