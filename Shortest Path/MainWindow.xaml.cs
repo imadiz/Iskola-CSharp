@@ -26,9 +26,9 @@ namespace Shortest_Path
         {
             InitializeComponent();
             VM = (ViewModel)DataContext;
-            AddPoints();
+            DrawPoints();
         }
-        public void AddPoints()
+        public void DrawPoints()
         {
             Ellipse start = new Ellipse()
             {
@@ -41,6 +41,9 @@ namespace Shortest_Path
             Canvas.SetTop(start, DrawArea.Height / 2);
             Canvas.SetLeft(start, DrawArea.Width / 2);
 
+            DrawArea.Children.Clear();
+
+            VM.AllPoints.Clear();
             VM.AllPoints.Add(new Point(DrawArea.Width / 2, DrawArea.Height / 2));
             DrawArea.Children.Add(start);
 
@@ -51,15 +54,50 @@ namespace Shortest_Path
                     Width = 5,
                     Height = 5,
                     Stroke = Brushes.Black,
-                    StrokeThickness = 2
+                    StrokeThickness = 2,
+                    SnapsToDevicePixels = true
                 };
 
-                VM.AllPoints.Add(new Point(VM.rnd.Next((int)DrawArea.Width), VM.rnd.Next((int)DrawArea.Height)));
+                VM.AllPoints.Add(new Point(VM.rnd.Next(5, (int)DrawArea.Width - 5), VM.rnd.Next(5, (int)DrawArea.Height - 5)));
 
                 Canvas.SetLeft(circle, VM.AllPoints.Last().X);
                 Canvas.SetTop(circle, VM.AllPoints.Last().Y);
                 DrawArea.Children.Add(circle);
             }
+        }
+
+        private void mi_redraw_Click(object sender, RoutedEventArgs e)
+        {
+            DrawPoints();
+        }
+
+        private void mi_start_Click(object sender, RoutedEventArgs e)
+        {
+            StartSearch();
+        }
+
+        public void StartSearch()
+        {
+            ObservableCollection<Point> CurrentPossiblePath = new ObservableCollection<Point>();
+            do
+            {
+                while (true)//Addig, amíg van nincs egy egyedi sorrend.
+                {
+                    for (int i = 0; i < VM.AllPoints.Count; i++)
+                    {
+                        CurrentPossiblePath.Add(VM.AllPoints[VM.rnd.Next(VM.AllPoints.Count - 1)]);//Véletlenszerű összepakolás
+                    }
+
+                    if (!VM.PossiblePaths.Contains(CurrentPossiblePath))//Ha még nincs ilyen sorrend
+                    {
+                        VM.PossiblePaths.Add(CurrentPossiblePath);//Hozzáadás
+                        break;//Kész, kilépés
+                    }
+                }
+
+                //Path számolási logika
+
+            } while (!VM.PossiblePaths.Contains(CurrentPossiblePath));//Amíg nincs meg a jelenlegi sorrend. (Az összes lehetséges sorrendig)
         }
     }
 }

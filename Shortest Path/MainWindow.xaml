@@ -17,20 +17,25 @@
         </Grid.RowDefinitions>
         <Menu VerticalAlignment="Top"
               Grid.Row="0">
-            <MenuItem Header="Rajt"/>
+            <MenuItem x:Name="mi_redraw"
+                      Header="Újrarajzolás"
+                      Click="mi_redraw_Click"/>
+            <MenuItem x:Name="mi_start"
+                      Header="Legrövidebb út keresése"
+                      Click="mi_start_Click"/>
         </Menu>
         <DockPanel Grid.Row="1">
             <Canvas x:Name="DrawArea"
                     Grid.Row="1"
                     Width="250"
-                    Height="450"
+                    Height="464"
                     DockPanel.Dock="Left"/>
             <ListBox ItemsSource="{Binding AllPoints}"
-                     DockPanel.Dock="Right">
+                     DockPanel.Dock="Right"
+                     HorizontalContentAlignment="Center">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch"
-                              VerticalAlignment="Center">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>

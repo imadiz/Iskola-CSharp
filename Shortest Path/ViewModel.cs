@@ -19,6 +19,7 @@ namespace Shortest_Path
         }
 
         public ObservableCollection<Point> AllPoints { get; set; } = new ObservableCollection<Point>();
+        public ObservableCollection<ObservableCollection<Point>> PossiblePaths { get; set; } = new ObservableCollection<ObservableCollection<Point>>(); 
         public Random rnd { get; set; } = new Random();
     }
 }
