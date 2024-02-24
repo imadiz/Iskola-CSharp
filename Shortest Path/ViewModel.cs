@@ -18,6 +18,28 @@ namespace Shortest_Path
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private int _numberofpossibilities = 0;
+        public int NumberOfPossibilities
+        {
+            get => _numberofpossibilities;
+            set
+            {
+                _numberofpossibilities = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _delay = 1;
+        public int Delay
+        {
+            get => _delay;
+            set
+            {
+                _delay = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ObservableCollection<Point> AllPoints { get; set; } = new ObservableCollection<Point>();
         public List<List<Point>> PossiblePaths { get; set; } = new List<List<Point>>();
         public ObservableCollection<double> PossibleDistances { get; set; } = new ObservableCollection<double>();

@@ -24,6 +24,22 @@
             <MenuItem x:Name="mi_start"
                       Header="Legrövidebb út keresése"
                       Click="mi_start_Click"/>
+            <Label Content="Késleltetés:"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"/>
+            <Slider Value="{Binding Delay}"
+                    Orientation="Horizontal"
+                    Maximum="1000"
+                    Minimum="0"
+                    Width="200"
+                    Background="Gray"/>
+            <Label Content="{Binding Delay}"
+                   Padding="0"
+                   IsEnabled="False"/>
+            <Label Content="ms"
+                   Padding="0"
+                   IsEnabled="False"/>
         </Menu>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -79,15 +95,27 @@
                 </ListBox>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Log | Számolt utak:"
-                           HorizontalAlignment="Center"
-                           Grid.Column="0"/>
-                    <Label Content="{Binding PossibleDistances.Count}"
-                           HorizontalAlignment="Center"
-                           Grid.Column="1"/>
+                    <StackPanel Grid.Column="0"
+                                Orientation="Horizontal">
+                        <Label Content="Log"
+                               DockPanel.Dock="Left"/>
+                        <Label Content="|"
+                               HorizontalAlignment="Left"/>
+                        <Label Content="Lehetőségek:"
+                               HorizontalContentAlignment="Right"
+                               HorizontalAlignment="Right"
+                               DockPanel.Dock="Right"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <Label Content="{Binding PossibleDistances.Count}"/>
+                        <Label Content="/"/>
+                        <Label Content="{Binding NumberOfPossibilities}"/>
+                    </StackPanel>
                 </Grid>
                 <ListBox ItemsSource="{Binding AllLogs}"
                          Grid.Row="4"/>

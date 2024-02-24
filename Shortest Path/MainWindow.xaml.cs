@@ -43,10 +43,10 @@ namespace Shortest_Path
             DrawArea.Children.Clear();
 
             VM.AllPoints.Clear();
-            VM.AllPoints.Add(new Point(DrawArea.ActualWidth / 2, DrawArea.ActualHeight / 2));
+            VM.AllPoints.Add(new Point(DrawArea.ActualWidth / 2 + start.Width / 2, DrawArea.ActualHeight / 2 + start.Height / 2));
             DrawArea.Children.Add(start);
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Ellipse circle = new Ellipse()
                 {
@@ -69,41 +69,49 @@ namespace Shortest_Path
         {
             List<Point> CurrentPossiblePath = new List<Point>();
 
-            do
+            VM.PossiblePaths.Clear();//Eddigi adatok törlése
+            VM.PossibleDistances.Clear();//Eddigi adatok törlése
+
+            for (int i = 0; i < VM.NumberOfPossibilities; i++)
             {
                 CurrentPossiblePath = new List<Point> { VM.AllPoints[0]/*Indulópont*/ };
 
                 while (true)//Addig, amíg nincs egy egyedi sorrend.
                 {
-                    while (CurrentPossiblePath.Count != VM.AllPoints.Count)
+                    while (CurrentPossiblePath.Count != VM.AllPoints.Count)//Addig amíg a sorrendben nincs ugyanannyi pont mint az összes pont
                     {
-                        Point NextRandomPoint = VM.AllPoints[VM.rnd.Next(1, VM.AllPoints.Count)];
+                        Point NextRandomPoint = VM.AllPoints[VM.rnd.Next(1, VM.AllPoints.Count)];//Új random pont
 
-                        if (!CurrentPossiblePath.Contains(NextRandomPoint))
-                            CurrentPossiblePath.Add(NextRandomPoint);//Véletlenszerű összepakolás
+                        if (!CurrentPossiblePath.Contains(NextRandomPoint))//Ha még nincs benne a jelenlegi pont (egy sorrendben duplicate-ek kiszűrése)
+                            CurrentPossiblePath.Add(NextRandomPoint);//Jelenlegi random pont hozzáadása a sorrendhez
                     }
 
-                    if (!VM.PossiblePaths.Any(x=>Enumerable.SequenceEqual(CurrentPossiblePath, x)))//Ha egyedi az új út
+                    if (!VM.PossiblePaths.Any(x => Enumerable.SequenceEqual(CurrentPossiblePath, x)))//Ha egyedi az új út
                     {
                         VM.PossiblePaths.Add(CurrentPossiblePath);//Hozzáadás
                         break;//Kész, kilépés
                     }
-                    else//Ha már van
+                    else//Ha már van, törlés és új sorrend
                     {
                         CurrentPossiblePath = new List<Point>
                         {
                             VM.AllPoints[0]//Indulópont
-                        };//Törlés, újra
+                        };
                     }
                 }
 
-                App.Current.Dispatcher.BeginInvoke(new Action(() =>
+                App.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    for (int i = 0; i < DrawArea.Children.Count; i++)
+                    List<Line> ToRemove = new List<Line>();
+
+                    foreach (var item in DrawArea.Children)
                     {
-                        if (DrawArea.Children[i].GetType() == typeof(Line))//Ha vonal
-                            DrawArea.Children.RemoveAt(i);//Törlés
+                        if (item.GetType() == typeof(Line))
+                            ToRemove.Add(item as Line);
                     }
+
+                    foreach (Line item in ToRemove)
+                        DrawArea.Children.Remove(item);
                 }));
 
                 Double PathDistance = 0;//út hossz
@@ -126,7 +134,9 @@ namespace Shortest_Path
                             Stroke = Brushes.Red,
                             StrokeThickness = 1
                         });//Pontok közötti vonal látszódik
-                    })).Wait();
+                    }));
+
+                    Task.Delay(VM.Delay).Wait();//Késleltetés
 
                     if (CurrentPoint.X >= NextPoint.X)//Ha balra van a következő pont
                     {
@@ -149,14 +159,58 @@ namespace Shortest_Path
 
                 App.Current.Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    VM.PossibleDistances.Add(PathDistance);
-                }));
+                    VM.PossibleDistances.Add(PathDistance);//Kiszámolt sorrend hozzáadása
+                })).Wait();
 
                 WriteLog($"Út hossza: {PathDistance:0.0000}");
+            }
+            WriteLog($"Legrövidebb út hossza: {VM.PossibleDistances.Min():0.0000}");
+        }
+        public void DrawShortestPath()
+        {
+            List<Point> Path = VM.PossiblePaths[VM.PossibleDistances.IndexOf(VM.PossibleDistances.Min())];
+            List<Line> ToRemove = new List<Line>();
 
-                //TODO: ki kell lépni valahogy a ciklusból.
+            foreach (var item in DrawArea.Children)
+            {
+                if (item.GetType() == typeof(Line))
+                    ToRemove.Add(item as Line);
+            }
 
-            } while (true);//Amíg nincs meg a jelenlegi sorrend. (Az összes lehetséges sorrendig)
+            foreach (Line item in ToRemove)
+                DrawArea.Children.Remove(item);
+
+            for (int i = 0; i < Path.Count - 1; i++)
+            {
+                DrawArea.Children.Add(new Line
+                {
+                    X1 = Path[i].X,
+                    Y1 = Path[i].Y,
+                    X2 = Path[i + 1].X,
+                    Y2 = Path[i + 1].Y,
+                    Stroke = Brushes.Red,
+                    StrokeThickness = 1
+                });//Pontok közötti vonal látszódik
+            }
+        }
+        public void CalculateNumberOfPossibilites()//Faktoriális számolás
+        {
+            WriteLog("Lehetőségek számának kiszámítása...");
+            int EllipseCount = 0;
+
+            App.Current.Dispatcher.BeginInvoke((Action)(() =>
+            {
+                EllipseCount = DrawArea.Children.OfType<Ellipse>().Count();//Pontok száma
+            })).Wait();
+
+            VM.NumberOfPossibilities = EllipseCount - 1;
+
+            for (int i = 1; i < EllipseCount - 1; i++)//Ahány pont van a kezdésen kívül
+            {
+                VM.NumberOfPossibilities = (VM.NumberOfPossibilities * i);//Lehetőségek megszorzása a pontok számával
+            }
+
+            WriteLog($"Lehetőségek száma: {VM.NumberOfPossibilities}");
         }
         public void WriteLog(string log)
         {
@@ -181,8 +235,13 @@ namespace Shortest_Path
             mi_redraw.IsEnabled = false;
             mi_start.IsEnabled = false;
 
+            CalculateNumberOfPossibilites();//Összes lehetőség kiszámolása
+
             await Task.Run(StartSearch);
-            MessageBox.Show($"A legrövidebb út {VM.PossibleDistances.Max():0.0000} hosszú.", "Legrövidebb út számító", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            DrawShortestPath();
+
+            MessageBox.Show($"A legrövidebb út {VM.PossibleDistances.Min():0.0000} hosszú, és ki van rajzolva.", "Legrövidebb út számító", MessageBoxButton.OK, MessageBoxImage.Information);
 
             mi_redraw.IsEnabled = true;
             mi_start.IsEnabled = true;
