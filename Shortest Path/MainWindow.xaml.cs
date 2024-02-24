@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,7 +48,7 @@ namespace Shortest_Path
             VM.AllPoints.Add(new Point(DrawArea.ActualWidth / 2 + start.Width / 2, DrawArea.ActualHeight / 2 + start.Height / 2));
             DrawArea.Children.Add(start);
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < VM.NumberOfPoints; i++)
             {
                 Ellipse circle = new Ellipse()
                 {
@@ -57,12 +59,24 @@ namespace Shortest_Path
                     SnapsToDevicePixels = true
                 };
 
-                VM.AllPoints.Add(new Point(VM.rnd.Next(5, (int)DrawArea.ActualWidth - 5), VM.rnd.Next(5, (int)DrawArea.ActualHeight - 5)));
+                int PointX = VM.rnd.Next(5, (int)DrawArea.ActualWidth - 5);
+                int PointY = VM.rnd.Next(5, (int)DrawArea.ActualHeight - 5);
+
+                while (VM.AllPoints.All(x => Math.Abs(x.X - PointX) > 10) && VM.AllPoints.All(x => Math.Abs(x.Y - PointY) > 10))//Legyen minimum 10 pixel a pontok között.
+                {
+                    PointX = VM.rnd.Next(5, (int)DrawArea.ActualWidth - 5);
+                    PointY = VM.rnd.Next(5, (int)DrawArea.ActualHeight - 5);
+                }
+
+                VM.AllPoints.Add(new Point(PointX, PointY));//Új pont hozzáadása
 
                 Canvas.SetLeft(circle, VM.AllPoints.Last().X - circle.Width / 2);
                 Canvas.SetTop(circle, VM.AllPoints.Last().Y - circle.Height / 2);
                 DrawArea.Children.Add(circle);
             }
+
+            CalculateNumberOfPossibilites();//Összes lehetőség kiszámolása
+
             WriteLog("Pontok megrajzolva!");
         }
         public void StartSearch()
@@ -102,16 +116,16 @@ namespace Shortest_Path
 
                 App.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    List<Line> ToRemove = new List<Line>();
+                    List<Line> ToRemove = new List<Line>();//Eltávolítandó vonalak
 
-                    foreach (var item in DrawArea.Children)
+                    foreach (var item in DrawArea.Children)//Vonalak megkeresése
                     {
-                        if (item.GetType() == typeof(Line))
-                            ToRemove.Add(item as Line);
+                        if (item.GetType() == typeof(Line))//Ha vonal típusú UIElement
+                            ToRemove.Add(item as Line);//Hozzáadás az eltávolítandókhoz
                     }
 
-                    foreach (Line item in ToRemove)
-                        DrawArea.Children.Remove(item);
+                    foreach (Line item in ToRemove)//Eltávolítandó vonalak
+                        DrawArea.Children.Remove(item);//Törlés
                 }));
 
                 Double PathDistance = 0;//út hossz
@@ -127,14 +141,14 @@ namespace Shortest_Path
                     {
                         DrawArea.Children.Add(new Line
                         {
-                            X1 = CurrentPoint.X,
-                            Y1 = CurrentPoint.Y,
-                            X2 = NextPoint.X,
-                            Y2 = NextPoint.Y,
-                            Stroke = Brushes.Red,
-                            StrokeThickness = 1
-                        });//Pontok közötti vonal látszódik
-                    }));
+                            X1 = CurrentPoint.X,//Kezdet X-koordináta
+                            Y1 = CurrentPoint.Y,//Kezdet Y-koordináta
+                            X2 = NextPoint.X,//Vég X-koordináta
+                            Y2 = NextPoint.Y,//Vég Y-koordináta
+                            Stroke = Brushes.Red,//Szín
+                            StrokeThickness = 1//Vastagság
+                        });
+                    }));//Pontok közötti vonal megjelenítése
 
                     Task.Delay(VM.Delay).Wait();//Késleltetés
 
@@ -154,7 +168,7 @@ namespace Shortest_Path
                     }
 
                     PathDistance += DistanceBetweenPoints;//Pontok közötti hossz hozzáadása az úthoz
-                    PointIndex++;
+                    PointIndex++;//Következő pont
                 }
 
                 App.Current.Dispatcher.BeginInvoke(new Action(() =>
@@ -164,6 +178,7 @@ namespace Shortest_Path
 
                 WriteLog($"Út hossza: {PathDistance:0.0000}");
             }
+
             WriteLog($"Legrövidebb út hossza: {VM.PossibleDistances.Min():0.0000}");
         }
         public void DrawShortestPath()
@@ -224,18 +239,13 @@ namespace Shortest_Path
         {
             DrawPoints();
         }
-
-        private void mi_redraw_Click(object sender, RoutedEventArgs e)
-        {
-            DrawPoints();
-        }
-
         private async void mi_start_Click(object sender, RoutedEventArgs e)
         {
-            mi_redraw.IsEnabled = false;
+            mi_points.IsEnabled = false;
             mi_start.IsEnabled = false;
+            sli_delay.IsEnabled = true;
 
-            CalculateNumberOfPossibilites();//Összes lehetőség kiszámolása
+            VM.Delay = 1;//Késleltetés (azért 1 mert így kirajzolódik minden más is a UI-on, ha utána a user leveszi 0-ra rendesen működik minden, csak akkor nem ha 0-val indul.)
 
             await Task.Run(StartSearch);
 
@@ -243,8 +253,20 @@ namespace Shortest_Path
 
             MessageBox.Show($"A legrövidebb út {VM.PossibleDistances.Min():0.0000} hosszú, és ki van rajzolva.", "Legrövidebb út számító", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            mi_redraw.IsEnabled = true;
+            sli_delay.IsEnabled = false;
+            mi_points.IsEnabled = true;
             mi_start.IsEnabled = true;
+        }
+        private void mi_redraw_Click(object sender, RoutedEventArgs e)
+        {
+            DrawPoints();
+        }
+        private void mi_pointcount_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = sender as MenuItem;
+
+            VM.NumberOfPoints = Convert.ToInt32(mi.Header);//Új pontszám
+            DrawPoints();//Pontok újrarajzolása
         }
     }
 }

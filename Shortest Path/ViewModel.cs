@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,6 +26,17 @@ namespace Shortest_Path
             set
             {
                 _numberofpossibilities = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _numberofpoints = 5;
+        public int NumberOfPoints
+        {
+            get => _numberofpoints;
+            set
+            {
+                _numberofpoints = value;
                 OnPropertyChanged();
             }
         }
