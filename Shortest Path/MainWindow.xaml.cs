@@ -171,10 +171,7 @@ namespace Shortest_Path
                     PointIndex++;//Következő pont
                 }
 
-                App.Current.Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    VM.PossibleDistances.Add(PathDistance);//Kiszámolt sorrend hozzáadása
-                })).Wait();
+                App.Current.Dispatcher.BeginInvoke(new Action(() => { VM.PossibleDistances.Add(PathDistance); })).Wait();//Kiszámolt sorrend hozzáadása
 
                 WriteLog($"Út hossza: {PathDistance:0.0000}");
             }
@@ -222,7 +219,7 @@ namespace Shortest_Path
 
             for (int i = 1; i < EllipseCount - 1; i++)//Ahány pont van a kezdésen kívül
             {
-                VM.NumberOfPossibilities = (VM.NumberOfPossibilities * i);//Lehetőségek megszorzása a pontok számával
+                VM.NumberOfPossibilities *= i;//Lehetőségek megszorzása a pontok számával
             }
 
             WriteLog($"Lehetőségek száma: {VM.NumberOfPossibilities}");
