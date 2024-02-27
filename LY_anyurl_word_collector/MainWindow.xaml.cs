@@ -13,24 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Orszagok
+namespace LY_anyurl_word_collector
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ViewModel VM;
         public MainWindow()
         {
             InitializeComponent();
-            VM = this.DataContext as ViewModel;
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (IsLoaded)
-                VM.BiggestOrLowest.Execute(cmb_biggestorlowest);
         }
     }
 }

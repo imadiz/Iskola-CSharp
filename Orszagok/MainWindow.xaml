@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:inter="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Orszagok"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
@@ -51,21 +52,32 @@
                         <RadioButton Content="10 milliónál kevesebb"/>
                     </StackPanel>
                 </GroupBox>
-                <StackPanel Orientation="Horizontal">
+                <DockPanel LastChildFill="True"
+                           Margin="0 0 0 10">
                     <Button Content="Kiszámol"
                             Margin="0 0 10 0"
+                            DockPanel.Dock="Left"
                             Command="{Binding CalculateMoreOrLess}"
                             CommandParameter="{Binding ElementName=MoreThan10Mil,
                                                        Path=IsChecked}"/>
-                    <Label Content="{Binding MoreOrLessDisplay}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox SelectedIndex="0">
+                    <Label Content="{Binding MoreOrLessDisplay}"
+                           DockPanel.Dock="Right"/>
+                </DockPanel>
+                <DockPanel>
+                    <ComboBox x:Name="cmb_biggestorlowest"
+                              DockPanel.Dock="Left"
+                              SelectedIndex="0"
+                              SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Válassz"
+                                      Focusable="False"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"/>
                         <ComboBoxItem Content="Legnagyobb"/>
                         <ComboBoxItem Content="Legkisebb"/>
                     </ComboBox>
-                    <Label Content=""/>
-                </StackPanel>
+                    <Label Content="{Binding BiggestOrLowestDisplay.Name}"/>
+                    <Label Content="{Binding BiggestOrLowestDisplay.Population}"/>
+                </DockPanel>
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,0 +1,61 @@
+﻿<Window x:Class="LY_anyurl_word_collector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LY_anyurl_word_collector"
+        mc:Ignorable="d"
+        Title="LY-t szavakat tartalmazó szó kereső" MinHeight="450" MinWidth="600">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0"
+                Grid.ColumnSpan="2"
+                BorderBrush="Black"
+                BorderThickness="0 0 0 1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="URL:"
+                       VerticalAlignment="Center"
+                       Grid.Column="0"/>
+                <TextBox x:Name="txt_url"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Stretch"
+                         Grid.Column="1"/>
+                <Button x:Name="btn_start"
+                        Content="Keresés!"
+                        Command="{Binding StartSearch}"
+                        CommandParameter="{Binding ElementName=txt_url, Path=Text}"
+                        Grid.Column="2"/>
+            </Grid>
+        </Border>
+        <ScrollViewer Grid.Row="1"
+                      Grid.Column="0"
+                      HorizontalScrollBarVisibility="Auto">
+            <TextBlock Text="{Binding CurrentPageHTML}"/>
+        </ScrollViewer>
+        <ListBox Grid.Column="1"
+                 Grid.Row="1" ItemsSource="{Binding ListOfWords}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding DataContext}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Orszagok
@@ -15,6 +16,7 @@ namespace Orszagok
     public class ViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Country> AllCountries { get; set; } = new();
+
         private string _moreorlessdisplay = "";
         public string MoreOrLessDisplay
         {
@@ -41,6 +43,18 @@ namespace Orszagok
             } while (!sr.EndOfStream);
             AllCountries.RemoveAt(AllCountries.Count - 1);
         }
+
+        private Country _cbiggestorlowest= new Country();
+        public Country BiggestOrLowestDisplay
+        {
+            get => _cbiggestorlowest;
+            set
+            {
+                _cbiggestorlowest = value;
+                OnPropertyChanged();
+            }
+        }
+
         RelayCommand<bool> _calculatemoreorless;//A true több mint 10 millió
         public ICommand CalculateMoreOrLess
         {
@@ -56,10 +70,34 @@ namespace Orszagok
                 return _calculatemoreorless;
             }
         }
+
+        private RelayCommand<ComboBox> _biggestorlowest;
+        public ICommand BiggestOrLowest
+        {
+            get
+            {
+                _biggestorlowest = new RelayCommand<ComboBox>((cmb) =>
+                {
+                    switch (cmb.SelectedIndex)
+                    {
+                        case 1:
+                            BiggestOrLowestDisplay = AllCountries.First(x => x.Population.Equals(AllCountries.Max(p => p.Population)));
+                            break;
+                        case 2:
+                            BiggestOrLowestDisplay = AllCountries.First(x => x.Population.Equals(AllCountries.Min(p => p.Population)));
+                            break;
+                        default:
+                            break;
+                    }
+                });
+                return _biggestorlowest;
+            }
+        }
         public ViewModel()
         {
             ReadFile();
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
