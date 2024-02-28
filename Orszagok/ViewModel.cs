@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,9 +28,21 @@ namespace Orszagok
                 OnPropertyChanged();
             }
         }
-        public void ReadFile()
+
+
+        private Country _cbiggestorlowest= new Country();
+        public Country BiggestOrLowestDisplay
         {
-            StreamReader sr = new($@"orszagok.txt");
+            get => _cbiggestorlowest;
+            set
+            {
+                _cbiggestorlowest = value;
+                OnPropertyChanged();
+            }
+        }
+        public void ReadFile(string path)
+        {
+            StreamReader sr = new(@path);
             Country temp = new();
             do
             {
@@ -44,14 +57,23 @@ namespace Orszagok
             AllCountries.RemoveAt(AllCountries.Count - 1);
         }
 
-        private Country _cbiggestorlowest= new Country();
-        public Country BiggestOrLowestDisplay
+
+        #region Commands
+        RelayCommand _openfiledialog;
+        public ICommand SelectFile
         {
-            get => _cbiggestorlowest;
-            set
+            get
             {
-                _cbiggestorlowest = value;
-                OnPropertyChanged();
+                _openfiledialog = new RelayCommand(() =>
+                {
+                    OpenFileDialog ofd = new OpenFileDialog();
+                    ofd.InitialDirectory = Environment.CurrentDirectory;
+                    if ((bool)ofd.ShowDialog())
+                    {
+                        ReadFile(ofd.FileName);
+                    }
+                });
+                return _openfiledialog;
             }
         }
 
@@ -93,9 +115,10 @@ namespace Orszagok
                 return _biggestorlowest;
             }
         }
+        #endregion
+
         public ViewModel()
         {
-            ReadFile();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

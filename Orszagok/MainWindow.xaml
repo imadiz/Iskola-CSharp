@@ -19,7 +19,8 @@
         <Menu IsMainMenu="True"
               VerticalAlignment="Top"
               Grid.Row="0">
-            <MenuItem Header="Fájl"/>
+            <MenuItem Header="Fájl"
+                      Command="{Binding SelectFile}"/>
             <MenuItem Header="Európaiak"/>
         </Menu>
         <Grid Grid.Row="1">
