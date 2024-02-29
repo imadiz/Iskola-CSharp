@@ -7,6 +7,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 	  <NullableReferenceTypes>False</NullableReferenceTypes>
     <Nullable>disable</Nullable>
+    <StartupObject>Orszagok.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />

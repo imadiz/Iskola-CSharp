@@ -13,15 +13,12 @@ namespace Orszagok
     /// </summary>
     public partial class App : Application
     {
-        public MainWindow FirstWin { get; set; }
+        public ViewModel VM { get; set; } = new();
+        public MainWindow FirstWin { get; set; } = new MainWindow();
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            ViewModel VM = new();
-
-            FirstWin = new();
-            FirstWin.DataContext = VM;
             FirstWin.Show();
         }
     }

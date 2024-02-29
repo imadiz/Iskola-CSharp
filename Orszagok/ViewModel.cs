@@ -28,6 +28,23 @@ namespace Orszagok
                 OnPropertyChanged();
             }
         }
+        public List<ComboBoxItem> ComboBoxItems { get; set; } = new()
+        {
+            new ComboBoxItem()
+            {
+                Content = "- Válassz -",
+                IsEnabled = false,
+                Focusable = false
+            },
+            new ComboBoxItem()
+            {
+                Content = "Legnagyobb"
+            },
+            new ComboBoxItem()
+            {
+                Content = "Legkisebb"
+            }
+        };
 
 
         private Country _cbiggestorlowest= new Country();
@@ -119,6 +136,7 @@ namespace Orszagok
 
         public ViewModel()
         {
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -7,10 +7,8 @@
         xmlns:local="clr-namespace:Orszagok"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
+        DataContext="{StaticResource ResourceKey=SharedVM}"
         Title="Országok" Height="600" Width="450">
-    <Window.DataContext>
-        <local:ViewModel/>
-    </Window.DataContext>
     <Grid x:Name="RootGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -21,7 +19,9 @@
               Grid.Row="0">
             <MenuItem Header="Fájl"
                       Command="{Binding SelectFile}"/>
-            <MenuItem Header="Európaiak"/>
+            <MenuItem x:Name="mi_eu" 
+                      Header="Európaiak"
+                      Click="mi_eu_Click"/>
         </Menu>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -68,13 +68,14 @@
                     <ComboBox x:Name="cmb_biggestorlowest"
                               DockPanel.Dock="Left"
                               SelectedIndex="0"
-                              SelectionChanged="ComboBox_SelectionChanged">
-                        <ComboBoxItem Content="Válassz"
-                                      Focusable="False"
-                                      IsEnabled="False"
-                                      Visibility="Collapsed"/>
-                        <ComboBoxItem Content="Legnagyobb"/>
-                        <ComboBoxItem Content="Legkisebb"/>
+                              MinWidth="70"
+                              ItemsSource="{Binding ComboBoxItems}">
+                        <inter:Interaction.Triggers>
+                            <inter:EventTrigger EventName="SelectionChanged">
+                                <inter:InvokeCommandAction Command="{Binding BiggestOrLowest}"
+                                                           CommandParameter="{Binding ElementName=cmb_biggestorlowest}"/>
+                            </inter:EventTrigger>
+                        </inter:Interaction.Triggers>
                     </ComboBox>
                     <Label Content="{Binding BiggestOrLowestDisplay.Name}"/>
                     <Label Content="{Binding BiggestOrLowestDisplay.Population}"/>
