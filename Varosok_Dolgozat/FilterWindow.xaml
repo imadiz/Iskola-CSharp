@@ -30,8 +30,7 @@
                     HorizontalAlignment="Center">
             <Label Content="Ország:"/>
             <ComboBox ItemsSource="{Binding AllCountries}"
-                      MinWidth="120"
-                      SelectionChanged="ComboBox_SelectionChanged"/>
+                      MinWidth="120"/>
         </StackPanel>
         <Button Content="Lista mentése"
                 Grid.Row="1"
